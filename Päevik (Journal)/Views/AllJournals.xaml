@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Journal.Views"
              x:Class="Journal.Views.AllJournals"
              Title="Journals"
-             x:DataType="views:JournalModel"
+             xmlns:viewmodels="clr-namespace:Journal.ViewModels"
+             x:DataType="viewmodels:JournalModelListViewModel">
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding Journals}">
+            <ListView ItemsSource="{Binding JournalModels}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -15,7 +15,7 @@
                                 <Label Text="{Binding Title}"/>
                                 <Label Text="{Binding Content}" FontAttributes="Bold" />
                                 <Label Text="{Binding OriginalPoster}" />
-                                <Label Text="{Binding PostingDateTime}" />
+                                <Label Text="{Binding PostedAt}" />
                                 <Label Text="{Binding IsPrivate, StringFormat='Is Private: {0}'}" />
                             </StackLayout>
                         </ViewCell>
