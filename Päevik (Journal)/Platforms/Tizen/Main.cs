@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace Päevik__Journal_;
+namespace Journal;
 
 class Program : MauiApplication
 {

@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace Päevik__Journal_;
+namespace Journal;
 
 [Application]
 public class MainApplication : MauiApplication

@@ -1,4 +1,4 @@
-﻿namespace Päevik__Journal_;
+﻿namespace Journal;
 
 public partial class App : Application
 {
@@ -6,6 +6,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new NavigationPage(new Views.Journals());
 	}
 }

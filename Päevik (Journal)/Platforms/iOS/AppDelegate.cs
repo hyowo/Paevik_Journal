@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace Päevik__Journal_;
+namespace Journal;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

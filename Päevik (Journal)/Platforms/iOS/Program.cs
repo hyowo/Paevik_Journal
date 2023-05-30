@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace Päevik__Journal_;
+namespace Journal;
 
 public class Program
 {

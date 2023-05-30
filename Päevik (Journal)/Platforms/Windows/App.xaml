@@ -1,8 +1,8 @@
 ﻿<maui:MauiWinUIApplication
-    x:Class="Päevik__Journal_.WinUI.App"
+    x:Class="Journal.WinUI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:maui="using:Microsoft.Maui"
-    xmlns:local="using:Päevik__Journal_.WinUI">
+    xmlns:local="using:Journal.WinUI">
 
 </maui:MauiWinUIApplication>

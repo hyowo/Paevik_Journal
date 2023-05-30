@@ -1,4 +1,4 @@
-﻿namespace Päevik__Journal_;
+﻿namespace Journal;
 
 public static class MauiProgram
 {

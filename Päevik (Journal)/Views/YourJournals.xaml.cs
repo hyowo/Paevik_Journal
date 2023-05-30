@@ -1,4 +1,4 @@
-namespace Päevik__Journal_.Views;
+namespace Journal.Views;
 
 public partial class YourJournals : ContentPage
 {
