@@ -16,15 +16,11 @@
         </Grid.ColumnDefinitions>
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-            <Button>
-                <Button.Text>
-                    
-                </Button.Text>
-            </Button>
-            <Button Text="My Journals"/>
+            <ImageButton Source="addjournal.png" WidthRequest="40" HeightRequest="40"/>
+            <ImageButton Source="myjournals.png" WidthRequest="40" HeightRequest="40"/>
         </StackLayout>
-        
-        <ListView ItemsSource="{Binding Journals}" BackgroundColor="White" Grid.Row="1">
+
+        <ListView ItemsSource="{Binding Journals}" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -37,10 +33,12 @@
 
                             <Label Text="{Binding Title}" TextColor="Black" Grid.Row="0" FontSize="20"/>
                             <Label Text="{Binding Content}" TextColor="Black" Grid.Row="1" FontSize="16" />
-                            <Label Text="{Binding OriginalPoster}" TextColor="Black" Grid.Row="2" HorizontalOptions="Start" FontSize="14" />
-                            <Label Text="{Binding PostedAt, StringFormat='{}{0:dd MMM yyyy}'}" TextColor="Black" Grid.Row="2" HorizontalOptions="End" FontSize="12" />
+                            <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="Center">
+                                <Label Text="{Binding OriginalPoster}" TextColor="Black" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" />
+                                <Label Text="{Binding PostedAt, StringFormat='{}{0:dd MMM yyyy}'}" TextColor="Black" Grid.Row="2" HorizontalOptions="End" VerticalOptions="Center" FontSize="12" Margin="24, 0, 0, 0"/>
+                            </StackLayout>
 
-                            <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="Black" VerticalOptions="End" />
+                            <BoxView Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="2" BackgroundColor="Transparent" Margin="0, 24, 0, 0"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

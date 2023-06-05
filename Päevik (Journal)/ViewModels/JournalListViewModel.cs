@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Journal.Models;
 
 namespace Journal.ViewModels
@@ -7,7 +8,6 @@ namespace Journal.ViewModels
     public partial class JournalListViewModel : ObservableObject
     {
         private ObservableCollection<JournalModel> journals;
-
         public ObservableCollection<JournalModel> Journals
         {
             get { return journals; }
