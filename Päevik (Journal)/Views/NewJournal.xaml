@@ -2,11 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Journal.Views.NewJournal"
-             Title="NewJournal">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="NewJournal"
+             Background="white">
+    <StackLayout>
+        <Grid x:Name="ToastContainer"
+            BackgroundColor="Red"
+            Padding="10"
+            IsVisible="False"
+            Opacity="0"
+            VerticalOptions="Start">
+            <Label x:Name="ToastMessage"
+           TextColor="White"
+           FontSize="16"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           HorizontalTextAlignment="Center"
+           VerticalTextAlignment="Center" />
+        </Grid>
+        <Label Text="Title" TextColor="Black"/>
+        <Entry x:Name="TitleEntry" TextColor="Black" Background="#CCC" Placeholder="Enter post title..."/>
+
+        <Label Text="Name" TextColor="Black"/>
+        <Entry x:Name="NameEntry" TextColor="Black" Background="#CCC" Placeholder="Enter username, leave empty to be anonymous"/>
+
+        <Label Text="Content" TextColor="Black"/>
+        <Editor x:Name="ContentEditor" TextColor="Black" Background="#CCC" HeightRequest="200" Placeholder="Enter content..."/>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Is Private" TextColor="Black"/>
+            <CheckBox x:Name="IsPrivateCheckbox" Background="#CCC"/>
+        </StackLayout>
+        
+        <Button Text="Post" Clicked="OnSaveClicked" Background="#CCC"/>
+    </StackLayout>
 </ContentPage>
