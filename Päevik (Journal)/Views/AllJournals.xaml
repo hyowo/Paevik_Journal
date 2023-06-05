@@ -2,27 +2,49 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Journal.Views.AllJournals"
-             Title="Journals"
+             Title="View Journals"
              xmlns:viewmodels="clr-namespace:Journal.ViewModels"
-             x:DataType="viewmodels:JournalModelListViewModel">
-    <ContentPage.Content>
-        <StackLayout>
-            <ListView ItemsSource="{Binding JournalModels}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Title}"/>
-                                <Label Text="{Binding Content}" FontAttributes="Bold" />
-                                <Label Text="{Binding OriginalPoster}" />
-                                <Label Text="{Binding PostedAt}" />
-                                <Label Text="{Binding IsPrivate, StringFormat='Is Private: {0}'}" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ContentPage.Content>
+             Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <Button>
+                <Button.Text>
+                    
+                </Button.Text>
+            </Button>
+            <Button Text="My Journals"/>
+        </StackLayout>
+        
+        <ListView ItemsSource="{Binding Journals}" BackgroundColor="White" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Title}" TextColor="Black" Grid.Row="0" FontSize="20"/>
+                            <Label Text="{Binding Content}" TextColor="Black" Grid.Row="1" FontSize="16" />
+                            <Label Text="{Binding OriginalPoster}" TextColor="Black" Grid.Row="2" HorizontalOptions="Start" FontSize="14" />
+                            <Label Text="{Binding PostedAt, StringFormat='{}{0:dd MMM yyyy}'}" TextColor="Black" Grid.Row="2" HorizontalOptions="End" FontSize="12" />
+
+                            <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="Black" VerticalOptions="End" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </ContentPage>
