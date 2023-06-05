@@ -16,8 +16,8 @@
         </Grid.ColumnDefinitions>
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-            <ImageButton Source="addjournal.png" WidthRequest="40" HeightRequest="40"/>
-            <ImageButton Source="myjournals.png" WidthRequest="40" HeightRequest="40"/>
+            <ImageButton Source="addjournal.png" WidthRequest="40" HeightRequest="40" Command="{Binding NavigateToNewJournalCommand}"/>
+            <ImageButton Source="myjournals.png" WidthRequest="40" HeightRequest="40" Command="{Binding NavigateToMyJournalsCommand}"/>
         </StackLayout>
 
         <ListView ItemsSource="{Binding Journals}" Grid.Row="1">
@@ -44,5 +44,20 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Grid x:Name="ToastContainer"
+            BackgroundColor="#333333"
+            Padding="10"
+            IsVisible="False"
+            Opacity="0"
+            VerticalOptions="Start">
+            <Label x:Name="ToastMessage"
+           TextColor="White"
+           FontSize="16"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           HorizontalTextAlignment="Center"
+           VerticalTextAlignment="Center" />
+        </Grid>
     </Grid>
 </ContentPage>

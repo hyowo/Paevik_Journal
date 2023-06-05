@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Journal.Models;
+using Journal.Views;
 
 namespace Journal.ViewModels
 {
@@ -42,6 +43,18 @@ namespace Journal.ViewModels
                     Content = "Just started a new journal."
                 }
             };
+        }
+
+        [RelayCommand]
+        public void NavigateToNewJournal()
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new NewJournal());
+        }
+
+        [RelayCommand]
+        public void NavigateToMyJournals()
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new YourJournals());
         }
     }
 }
