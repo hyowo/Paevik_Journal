@@ -1,49 +1,47 @@
-﻿using Journal.Models;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
+using Journal.Models;
 
 namespace Journal.ViewModels
 {
-    public class JournalModelListViewModel : INotifyPropertyChanged
+    public partial class JournalListViewModel : ObservableObject
     {
-        private IList<JournalModel> _JournalModels;
+        private ObservableCollection<JournalModel> journals;
 
-        public IList<JournalModel> JournalModels
+        public ObservableCollection<JournalModel> Journals
         {
-            get { return _JournalModels; }
-            set { SetProperty(ref _JournalModels, value); }
+            get { return journals; }
+            set { SetProperty(ref journals, value); }
         }
-
-        public JournalModelListViewModel()
+        public JournalListViewModel()
         {
-            JournalModels = GetJournalModels();
-        }
-
-        private static IList<JournalModel> GetJournalModels()
-        {
-            // Code to retrieve the list of JournalModels from your data source
-            return new List<JournalModel>
+            Journals = new()
             {
-                new JournalModel { IsPrivate = true, Title = "My day at here.", Content = "JournalModel content 1", PostedAt = DateTime.Now, OriginalPoster = "User 1" },
-                new JournalModel { IsPrivate = false, Title = "Someone there.", Content = "JournalModel content 2", PostedAt = DateTime.Now.AddDays(-1), OriginalPoster = "User 2" },
+                new JournalModel
+                {
+                    IsPrivate = false,
+                    OriginalPoster = "John Doe",
+                    PostedAt = DateTime.Now.AddDays(-2),
+                    Title = "First Journal",
+                    Content = "This is my first journal entry."
+                },
+                new JournalModel
+                {
+                    IsPrivate = true,
+                    OriginalPoster = "Jane Smith",
+                    PostedAt = DateTime.Now.AddDays(-1),
+                    Title = "Private Journal",
+                    Content = "This journal entry is private."
+                },
+                new JournalModel
+                {
+                    IsPrivate = false,
+                    OriginalPoster = "Sam Johnson",
+                    PostedAt = DateTime.Now,
+                    Title = "New Journal",
+                    Content = "Just started a new journal."
+                }
             };
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            OnPropertyChanged(propertyName);
-            return true;
         }
     }
 }
