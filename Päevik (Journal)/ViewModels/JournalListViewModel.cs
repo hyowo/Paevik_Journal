@@ -16,12 +16,13 @@ namespace Journal.ViewModels
             set { SetProperty(ref journals, value); }
         }
 
-        private readonly string username;
+        [ObservableProperty]
+        private string username;
         public JournalListViewModel(JournalDatabase journalDatabase, string username = "")
         {
             database = journalDatabase;
             Journals = new();
-            this.username = username;
+            Username = username;
             RefreshJournals(this.username);
         }
 
@@ -38,21 +39,17 @@ namespace Journal.ViewModels
         }
 
         [RelayCommand]
-        public async void RefreshJournals(string username)
+        public async void RefreshJournals(string username = "")
         {
             if (username.Length > 0)
             {
-                Journals.Clear();
                 var journalModels = (await database.GetItemsAsync()).Where(j => j.OriginalPoster == username);
-                foreach (var j in journalModels)
-                    Journals.Add(j);
+                Journals = new(journalModels);
             }
             else
             {
-                Journals.Clear();
-                var journalModels = (await database.GetItemsAsync()).Where(j => j.IsPrivate == false);
-                foreach (var j in journalModels)
-                    Journals.Add(j);
+                var journalModels = (await database.GetItemsAsync()).Where(j => j.IsPrivate == false).ToList();
+                Journals = new(journalModels);
             }
         }
 
