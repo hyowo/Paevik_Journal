@@ -16,6 +16,8 @@
         </Grid.ColumnDefinitions>
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <Entry Placeholder="Input search term" TextChanged="Entry_TextChanged" TextColor="Black"/>
+            <ImageButton Source="sort.png" WidthRequest="40" HeightRequest="40" Command="{Binding SortJournalsCommand}" CommandParameter=""/>
             <ImageButton Source="refresh.png" WidthRequest="40" HeightRequest="40" Command="{Binding RefreshJournalsCommand}" CommandParameter=""/>
             <ImageButton Source="addjournal.png" WidthRequest="40" HeightRequest="40" Command="{Binding NavigateToNewJournalCommand}"/>
             <ImageButton Source="myjournals.png" WidthRequest="40" HeightRequest="40" Command="{Binding NavigateToMyJournalsCommand}"/>

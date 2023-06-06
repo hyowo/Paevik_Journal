@@ -25,4 +25,9 @@ public partial class AllJournals : ContentPage
         await ToastContainer.FadeTo(0, 250);
         ToastContainer.IsVisible = false;
     }
+
+    private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        (BindingContext as JournalListViewModel).SearchByString(e.NewTextValue);
+    }
 }

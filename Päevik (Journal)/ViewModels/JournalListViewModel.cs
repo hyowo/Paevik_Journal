@@ -18,6 +18,7 @@ namespace Journal.ViewModels
 
         [ObservableProperty]
         private string username;
+        private bool ascending = true;
         public JournalListViewModel(JournalDatabase journalDatabase, string username = "")
         {
             database = journalDatabase;
@@ -61,6 +62,27 @@ namespace Journal.ViewModels
                 await database.DeleteItemAsync(model);
             }
             RefreshJournals(Username);
+        }
+
+        [RelayCommand]
+        public async void SortJournals()
+        {
+            ascending ^= true;
+            var journalModels = (await database.GetItemsAsync()).Where(j => j.IsPrivate == false).ToList();
+            if (ascending)
+            {
+                Journals = new(journalModels.OrderBy(j => j.PostedAt));
+            }
+            else
+            {
+                Journals = new(journalModels.OrderBy(j => j.PostedAt).Reverse());
+            }
+        }
+
+        public async void SearchByString(string text)
+        {
+            var journalModels = (await database.GetItemsAsync()).Where(j => j.OriginalPoster.Contains(text) || j.Title.Contains(text) || j.Content.Contains(text)).ToList();
+            Journals = new(journalModels);
         }
     }
 }

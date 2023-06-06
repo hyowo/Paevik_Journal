@@ -52,6 +52,7 @@
 	  <None Remove="Resources\Images\addjournal.png" />
 	  <None Remove="Resources\Images\delete.png" />
 	  <None Remove="Resources\Images\myjournals.png" />
+	  <None Remove="Resources\Images\sort.png" />
 	</ItemGroup>
 
 	<ItemGroup>
