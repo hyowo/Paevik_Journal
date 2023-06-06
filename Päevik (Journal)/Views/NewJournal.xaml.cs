@@ -58,7 +58,7 @@ public partial class NewJournal : ContentPage
             if (Application.Current.MainPage is NavigationPage navigationPage && navigationPage.CurrentPage is AllJournals allJournalsPage)
             {
                 await allJournalsPage.ShowToast(message);
-                (allJournalsPage.BindingContext as JournalListViewModel).RefreshJournals();
+                (allJournalsPage.BindingContext as JournalListViewModel).RefreshJournals("");
             }
         }
     }
