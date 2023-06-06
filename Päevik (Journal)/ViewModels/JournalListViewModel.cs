@@ -54,14 +54,13 @@ namespace Journal.ViewModels
         }
 
         [RelayCommand]
-        public async void DeleteJournal(int id)
+        public async void DeleteJournal(JournalModel model)
         {
-            var journal_td = await database.GetItemAsync(id);
-            if (journal_td != null)
+            if (model != null)
             {
-                await database.DeleteItemAsync(journal_td);
+                await database.DeleteItemAsync(model);
             }
-            RefreshJournals(username);
+            RefreshJournals(Username);
         }
     }
 }
