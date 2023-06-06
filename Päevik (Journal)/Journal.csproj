@@ -50,6 +50,7 @@
 	  <None Remove="Resources\Fonts\Rubik-Regular.ttf" />
 	  <None Remove="Resources\Fonts\Rubik-SemiBold.ttf" />
 	  <None Remove="Resources\Images\addjournal.png" />
+	  <None Remove="Resources\Images\delete.png" />
 	  <None Remove="Resources\Images\myjournals.png" />
 	</ItemGroup>
 
