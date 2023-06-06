@@ -8,53 +8,39 @@ namespace Journal.ViewModels
 {
     public partial class JournalListViewModel : ObservableObject
     {
+        private readonly JournalDatabase database;
         private ObservableCollection<JournalModel> journals;
         public ObservableCollection<JournalModel> Journals
         {
             get { return journals; }
             set { SetProperty(ref journals, value); }
         }
-        public JournalListViewModel()
+        public JournalListViewModel(JournalDatabase journalDatabase)
         {
-            Journals = new()
-            {
-                new JournalModel
-                {
-                    IsPrivate = false,
-                    OriginalPoster = "John Doe",
-                    PostedAt = DateTime.Now.AddDays(-2),
-                    Title = "First Journal",
-                    Content = "This is my first journal entry."
-                },
-                new JournalModel
-                {
-                    IsPrivate = true,
-                    OriginalPoster = "Jane Smith",
-                    PostedAt = DateTime.Now.AddDays(-1),
-                    Title = "Private Journal",
-                    Content = "This journal entry is private."
-                },
-                new JournalModel
-                {
-                    IsPrivate = false,
-                    OriginalPoster = "Sam Johnson",
-                    PostedAt = DateTime.Now,
-                    Title = "New Journal",
-                    Content = "Just started a new journal."
-                }
-            };
+            database = journalDatabase;
+            Journals = new();
+            RefreshJournals();
         }
 
         [RelayCommand]
         public void NavigateToNewJournal()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new NewJournal());
+            Application.Current.MainPage.Navigation.PushAsync(new NewJournal(database));
         }
 
         [RelayCommand]
         public void NavigateToMyJournals()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new YourJournals());
+            Application.Current.MainPage.Navigation.PushAsync(new YourJournals(database));
+        }
+
+        [RelayCommand]
+        public async void RefreshJournals()
+        {
+            Journals.Clear();
+            var journalModels = (await database.GetItemsAsync()).Where(j => j.IsPrivate == false);
+            foreach (var j in journalModels)
+                Journals.Add(j);
         }
     }
 }
