@@ -3,10 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Journal.Views.YourJournals"
              Title="YourJournals">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ListView ItemsSource="{Binding Journals}" Grid.Row="1">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Text="{Binding Title}" TextColor="Black" Grid.Row="0" FontSize="20"/>
+                        <Label Text="{Binding Content}" TextColor="Black" Grid.Row="1" FontSize="16" />
+                        <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="Center">
+                            <Label Text="{Binding OriginalPoster}" TextColor="Black" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" />
+                            <Label Text="{Binding PostedAt, StringFormat='{}{0:dd MMM yyyy}'}" TextColor="Black" Grid.Row="2" HorizontalOptions="End" VerticalOptions="Center" FontSize="12" Margin="24, 0, 0, 0"/>
+                        </StackLayout>
+
+                        <BoxView Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="2" BackgroundColor="Transparent" Margin="0, 24, 0, 0"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
