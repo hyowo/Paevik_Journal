@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Journal.Views.AllJournals"
-             Title="View Journals"
+             Title="Read Journals"
              xmlns:viewmodels="clr-namespace:Journal.ViewModels"
              Background="White">
     <Grid>

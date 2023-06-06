@@ -4,10 +4,11 @@ namespace Journal.Views;
 
 public partial class AllJournals : ContentPage
 {
-	public AllJournals()
+    JournalDatabase database;
+	public AllJournals(JournalDatabase journalDatabase)
 	{
 		InitializeComponent();
-		BindingContext = new JournalListViewModel();
+		BindingContext = new JournalListViewModel(journalDatabase);
 	}
 
     public async Task ShowToast(string message, int durationInSeconds = 3)
