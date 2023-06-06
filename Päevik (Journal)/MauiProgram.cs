@@ -12,6 +12,7 @@ public static class MauiProgram
 				fonts.AddFont("Rubik-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("Rubik-Semibold.ttf", "OpenSansSemibold");
 			});
+		builder.Services.AddSingleton<JournalDatabase>();
 
 		return builder.Build();
 	}

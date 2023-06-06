@@ -17,7 +17,6 @@ public partial class App : Application
 		InitializeComponent();
 
 #if WINDOWS
-#pragma warning disable CA1416 // Validate platform compatibility
         Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, view) =>
         {
             var mauiWindow = handler.VirtualView;
@@ -28,9 +27,8 @@ public partial class App : Application
             AppWindow appWindow = AppWindow.GetFromWindowId(windowId);
             appWindow.Resize(new SizeInt32(WindowWidth, WindowHeight));
         });
-#pragma warning restore CA1416 // Validate platform compatibility
 #endif
 
-        MainPage = new NavigationPage(new AllJournals());
+        MainPage = new NavigationPage(new AllJournals(new()));
 	}
 }
