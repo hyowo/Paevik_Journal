@@ -10,6 +10,12 @@ public partial class AllJournals : ContentPage
 		BindingContext = new JournalListViewModel(journalDatabase);
 	}
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        (BindingContext as JournalListViewModel).RefreshJournals();
+    }
+
     public async Task ShowToast(string message, int durationInSeconds = 3)
     {
         ToastMessage.Text = message;
