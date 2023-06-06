@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Journal.Models;
-using Journal.Views;
 
 namespace Journal.ViewModels
 {
@@ -23,24 +22,26 @@ namespace Journal.ViewModels
         }
 
         [RelayCommand]
-        public void NavigateToNewJournal()
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new NewJournal(database));
-        }
-
-        [RelayCommand]
-        public void NavigateToMyJournals()
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new YourJournals(database));
-        }
-
-        [RelayCommand]
         public async void RefreshJournals()
         {
             Journals.Clear();
-            var journalModels = (await database.GetItemsAsync()).Where(j => j.IsPrivate == false);
-            foreach (var j in journalModels)
-                Journals.Add(j);
+            if (Preferences.ContainsKey("username"))
+            {
+                var journalModels = (await database.GetItemsAsync()).Where(j => j.OriginalPoster == Preferences.Get("username", string.Empty));
+                foreach (var j in journalModels)
+                    Journals.Add(j);
+            }
+        }
+
+        [RelayCommand]
+        public async void DeleteJournal(int id)
+        {
+            var journal_td = await database.GetItemAsync(id);
+            if (journal_td != null)
+            {
+                await database.DeleteItemAsync(journal_td);
+            }
+            RefreshJournals();
         }
     }
 }
