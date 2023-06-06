@@ -16,6 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <ImageButton Source="refresh.png" WidthRequest="40" HeightRequest="40" Command="{Binding RefreshJournalsCommand}"/>
             <ImageButton Source="addjournal.png" WidthRequest="40" HeightRequest="40" Command="{Binding NavigateToNewJournalCommand}"/>
             <ImageButton Source="myjournals.png" WidthRequest="40" HeightRequest="40" Command="{Binding NavigateToMyJournalsCommand}"/>
         </StackLayout>
