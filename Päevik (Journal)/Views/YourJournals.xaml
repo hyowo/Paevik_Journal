@@ -14,9 +14,9 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-            <Label Text="To delete a post, tap on it." TextColor="Black" HorizontalOptions="Start"/>
-            <ImageButton Source="refresh.png" WidthRequest="40" HeightRequest="40" Command="{Binding RefreshJournalsCommand}" CommandParameter="{Binding Username}"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="To delete a post, tap on it." TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <ImageButton Source="refresh.png" WidthRequest="40" HeightRequest="40" Command="{Binding RefreshJournalsCommand}" CommandParameter="{Binding Username}" HorizontalOptions="End"/>
         </StackLayout>
 
         <ListView ItemsSource="{Binding Journals}" Grid.Row="1" ItemTapped="ListView_ItemTapped">
