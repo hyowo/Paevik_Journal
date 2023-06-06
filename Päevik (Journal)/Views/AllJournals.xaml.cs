@@ -4,7 +4,6 @@ namespace Journal.Views;
 
 public partial class AllJournals : ContentPage
 {
-    JournalDatabase database;
 	public AllJournals(JournalDatabase journalDatabase)
 	{
 		InitializeComponent();
